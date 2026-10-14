@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比撒列团契 16/10 聚会</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            500: '#e07a5f',
+                            600: '#d1684c',
+                            800: '#3d405b',
+                            900: '#2b2d42'
+                        },
+                        sage: {
+                            500: '#81b29a',
+                            600: '#6fa188'
+                        },
+                        cream: '#f4f1de'
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background-color: #fcfbf7;
+        }
+        .editable-active {
+            outline: 2px dashed #e07a5f !important;
+            outline-offset: 4px;
+            border-radius: 4px;
+            background-color: rgba(224, 122, 95, 0.05);
+            cursor: text;
+        }
+        .flow-line {
+            position: absolute;
+            left: 2rem;
+            top: 3.5rem;
+            bottom: -1rem;
+            width: 2px;
+            background: linear-gradient(180deg, #e07a5f 0%, #81b29a 100%);
+            z-index: 0;
+        }
+        @media (min-width: 768px) {
+            .flow-line {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen relative pb-12 overflow-x-hidden">
+
+    <!-- 背景装饰 -->
+    <div class="fixed inset-0 pointer-events-none z-0 opacity-40">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-amber-200 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 -right-24 w-96 h-96 bg-teal-100 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- 顶部导航 & 控制栏 -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200/60 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold text-sm">
+                    <i class="fa-solid font-serif">✝</i>
+                </div>
+                <span class="font-serif font-bold text-stone-700 text-lg">Bezaleel Fellowship</span>
+            </div>
+            
+            <div class="flex items-center gap-2">
+                <button id="editToggleBtn" onclick="toggleEditMode()" class="text-sm px-3.5 py-1.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-pen-to-square text-brand-500"></i>
+                    <span id="editBtnText">开启编辑模式</span>
+                </button>
+                <button onclick="copyNoticeText()" class="text-sm px-3.5 py-1.5 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-medium shadow-sm transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-share-nodes"></i>
+                    <span>复制群通知</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <main class="max-w-3xl mx-auto px-4 pt-8 relative z-10">
+
+        <!-- 标题区域 -->
+        <div class="text-center mb-10">
+            <span class="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full mb-3 uppercase tracking-wider">
+                <i class="fa-regular fa-calendar-check mr-1"></i> 团契聚会流程
+            </span>
+            <h1 id="pageTitle" class="text-3xl md:text-4xl font-serif font-bold text-brand-900 tracking-tight mb-2 editable">
+                比撒列团契 16/10 聚会
+            </h1>
+            <p id="pageSubtitle" class="text-stone-500 text-sm md:text-base editable">
+                “无论在哪里，有两三个人奉我的名聚会，那里就有我在他们中间。”
+            </p>
+        </div>
+
+        <!-- 流程图列表容器 -->
+        <div id="flowContainer" class="relative space-y-6">
+
+            <!-- 1. 晚餐 -->
+            <div class="relative pl-14 md:pl-0 flex flex-col md:flex-row items-start group">
+                <div class="flow-line hidden md:block"></div>
+                <div class="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold shadow-md z-10 border-4 border-white">
+                    <i class="fa-solid fa-utensils text-sm"></i>
+                </div>
+                <div class="w-full md:w-[calc(50%-2rem)] bg-white p-5 rounded-2xl shadow-sm border border-stone-200/80 hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="editable text-xs font-bold text-amber-600 uppercase tracking-wide bg-amber-50 px-2.5 py-1 rounded-md">19:00</span>
+                        <span class="text-xs text-stone-400">环节 01</span>
+                    </div>
+                    <h3 class="editable text-lg font-bold text-stone-800 mb-1">晚餐时间</h3>
+                    <p class="text-sm text-stone-600 flex items-center gap-1.5">
+                        <i class="fa-regular fa-user text-amber-500"></i>
+                        <span>预备者：<span class="editable font-medium text-stone-800">文婷姐、林牧师</span></span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2. 敬拜 (含超链接) -->
+            <div class="relative pl-14 md:pl-0 flex flex-col md:flex-row-reverse items-start group">
+                <div class="flow-line hidden md:block"></div>
+                <div class="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold shadow-md z-10 border-4 border-white">
+                    <i class="fa-solid fa-music text-sm"></i>
+                </div>
+                <div class="w-full md:w-[calc(50%-2rem)] bg-white p-5 rounded-2xl shadow-sm border border-stone-200/80 hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="editable text-xs font-bold text-brand-600 uppercase tracking-wide bg-brand-50 px-2.5 py-1 rounded-md">19:45</span>
+                        <span class="text-xs text-stone-400">环节 02</span>
+                    </div>
+                    <h3 class="editable text-lg font-bold text-stone-800 mb-1">敬拜赞美</h3>
+                    <p class="text-sm text-stone-600 flex items-center gap-1.5 mb-3">
+                        <i class="fa-regular fa-user text-brand-500"></i>
+                        <span>带领者：<span class="editable font-medium text-stone-800">田鹏</span></span>
+                    </p>
+                    <div class="pt-2 border-t border-stone-100 flex items-center justify-between">
+                        <a id="link2" href="#" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-brand-500 hover:text-brand-600 font-medium bg-brand-50 px-3 py-1.5 rounded-lg transition">
+                            <i class="fa-solid fa-link"></i> <span id="linkText2">诗歌歌单 / PPT</span>
+                        </a>
+                        <button onclick="editLink('link2', 'linkText2')" class="text-xs text-stone-400 hover:text-brand-500 p-1">
+                            <i class="fa-solid fa-gear"></i> 设置链接
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 活动报告 (含超链接) -->
+            <div class="relative pl-14 md:pl-0 flex flex-col md:flex-row items-start group">
+                <div class="flow-line hidden md:block"></div>
+                <div class="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-10 h-10 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold shadow-md z-10 border-4 border-white">
+                    <i class="fa-solid fa-bullhorn text-sm"></i>
+                </div>
+                <div class="w-full md:w-[calc(50%-2rem)] bg-white p-5 rounded-2xl shadow-sm border border-stone-200/80 hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="editable text-xs font-bold text-teal-600 uppercase tracking-wide bg-teal-50 px-2.5 py-1 rounded-md">20:00</span>
+                        <span class="text-xs text-stone-400">环节 03</span>
+                    </div>
+                    <h3 class="editable text-lg font-bold text-stone-800 mb-2">活动报告</h3>
+                    <div class="pt-2 border-t border-stone-100 flex items-center justify-between">
+                        <a id="link3" href="#" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-teal-600 hover:text-teal-700 font-medium bg-teal-50 px-3 py-1.5 rounded-lg transition">
+                            <i class="fa-solid fa-link"></i> <span id="linkText3">查看活动报告详情</span>
+                        </a>
+                        <button onclick="editLink('link3', 'linkText3')" class="text-xs text-stone-400 hover:text-teal-600 p-1">
+                            <i class="fa-solid fa-gear"></i> 设置链接
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. 查经讨论 (含超链接) -->
+            <div class="relative pl-14 md:pl-0 flex flex-col md:flex-row-reverse items-start group">
+                <div class="flow-line hidden md:block"></div>
+                <div class="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold shadow-md z-10 border-4 border-white">
+                    <i class="fa-solid fa-book-bible text-sm"></i>
+                </div>
+                <div class="w-full md:w-[calc(50%-2rem)] bg-white p-5 rounded-2xl shadow-sm border border-stone-200/80 hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="editable text-xs font-bold text-indigo-600 uppercase tracking-wide bg-indigo-50 px-2.5 py-1 rounded-md">20:10</span>
+                        <span class="text-xs text-stone-400">环节 04</span>
+                    </div>
+                    <h3 class="editable text-lg font-bold text-stone-800 mb-1">查经讨论</h3>
+                    <div class="bg-stone-50 rounded-xl p-3 my-2 space-y-1.5 border border-stone-100">
+                        <p class="text-xs font-semibold text-indigo-600 flex items-center gap-1">
+                            <i class="fa-solid fa-bookmark"></i> <span class="editable">马可福音 2:1-12</span>
+                        </p>
+                        <p class="text-sm font-bold text-stone-800 editable">《你更深的需要被看见了吗？》</p>
+                    </div>
+                    <p class="text-sm text-stone-600 flex items-center gap-1.5 mb-3">
+                        <i class="fa-regular fa-user text-indigo-500"></i>
+                        <span>小组长：<span class="editable font-medium text-stone-800">颜源、克检、文浩</span></span>
+                    </p>
+                    <div class="pt-2 border-t border-stone-100 flex items-center justify-between">
+                        <a id="link4" href="#" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-indigo-600 hover:text-indigo-700 font-medium bg-indigo-50 px-3 py-1.5 rounded-lg transition">
+                            <i class="fa-solid fa-link"></i> <span id="linkText4">线上经文 / 查经资料</span>
+                        </a>
+                        <button onclick="editLink('link4', 'linkText4')" class="text-xs text-stone-400 hover:text-indigo-600 p-1">
+                            <i class="fa-solid fa-gear"></i> 设置链接
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. 零食茶点 -->
+            <div class="relative pl-14 md:pl-0 flex flex-col md:flex-row items-start group">
+                <div class="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-10 h-10 rounded-full bg-rose-400 text-white flex items-center justify-center font-bold shadow-md z-10 border-4 border-white">
+                    <i class="fa-solid fa-mug-hot text-sm"></i>
+                </div>
+                <div class="w-full md:w-[calc(50%-2rem)] bg-white p-5 rounded-2xl shadow-sm border border-stone-200/80 hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="editable text-xs font-bold text-rose-500 uppercase tracking-wide bg-rose-50 px-2.5 py-1 rounded-md">21:30 左右</span>
+                        <span class="text-xs text-stone-400">环节 05</span>
+                    </div>
+                    <h3 class="editable text-lg font-bold text-stone-800 mb-1">零食茶点时间</h3>
+                    <p class="editable text-sm text-stone-500">自由交流、交通与祷告时间</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 交互逻辑 -->
+    <script>
+        let isEditMode = false;
+
+        // 切换编辑模式
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            const editables = document.querySelectorAll('.editable');
+            const btnText = document.getElementById('editBtnText');
+            const btn = document.getElementById('editToggleBtn');
+
+            if (isEditMode) {
+                editables.forEach(el => {
+                    el.contentEditable = "true";
+                    el.classList.add('editable-active');
+                });
+                btnText.innerText = "💾 保存修改";
+                btn.classList.replace('bg-stone-100', 'bg-emerald-500');
+                btn.classList.replace('text-stone-700', 'text-white');
+            } else {
+                editables.forEach(el => {
+                    el.contentEditable = "false";
+                    el.classList.remove('editable-active');
+                });
+                btnText.innerText = "✍️ 开启编辑模式";
+                btn.classList.replace('bg-emerald-500', 'bg-stone-100');
+                btn.classList.replace('text-white', 'text-stone-700');
+                saveToLocalStorage();
+                alert('修改已保存！');
+            }
+        }
+
+        // 修改超链接
+        function editLink(linkId, textId) {
+            const linkEl = document.getElementById(linkId);
+            const textEl = document.getElementById(textId);
+
+            const currentUrl = linkEl.getAttribute('href') === '#' ? '' : linkEl.getAttribute('href');
+            const newUrl = prompt('请输入跳转的网址 (URL):', currentUrl);
+
+            if (newUrl !== null) {
+                const newText = prompt('请输入按钮显示文字:', textEl.innerText);
+                if (newText) {
+                    textEl.innerText = newText;
+                }
+                linkEl.setAttribute('href', newUrl || '#');
+                saveToLocalStorage();
+            }
+        }
+
+        // 保存到 LocalStorage
+        function saveToLocalStorage() {
+            const data = {
+                title: document.getElementById('pageTitle').innerText,
+                subtitle: document.getElementById('pageSubtitle').innerText,
+                htmlContent: document.getElementById('flowContainer').innerHTML,
+                links: {
+                    link2: { url: document.getElementById('link2').href, text: document.getElementById('linkText2').innerText },
+                    link3: { url: document.getElementById('link3').href, text: document.getElementById('linkText3').innerText },
+                    link4: { url: document.getElementById('link4').href, text: document.getElementById('linkText4').innerText }
+                }
+            };
+            localStorage.setItem('fellowship_flow_data', JSON.stringify(data));
+        }
+
+        // 加载 LocalStorage 数据
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('fellowship_flow_data');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    if (data.title) document.getElementById('pageTitle').innerText = data.title;
+                    if (data.subtitle) document.getElementById('pageSubtitle').innerText = data.subtitle;
+                    if (data.htmlContent) document.getElementById('flowContainer').innerHTML = data.htmlContent;
+                } catch(e) {
+                    console.error('加载本地保存数据失败', e);
+                }
+            }
+        }
+
+        // 复制微信通知文本
+        function copyNoticeText() {
+            const title = document.getElementById('pageTitle').innerText;
+            const text = `📌 ${title}\n\n` +
+                `1️⃣ 19:00 晚餐\n   预备者：文婷姐、林牧师\n` +
+                `2️⃣ 19:45 敬拜\n   带领者：田鹏\n` +
+                `3️⃣ 20:00 活动报告\n` +
+                `4️⃣ 20:10 查经讨论\n   经文：马可福音 2:1-12\n   题目：《你更深的需要被看见了吗？》\n   小组长：颜源、克检、文浩\n` +
+                `5️⃣ 21:30 零食茶点时间\n\n` +
+                `欢迎大家准时参加！`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert('微信群通知文本已成功复制到剪贴板！');
+            }).catch(() => {
+                alert('复制失败，请手动选择复制。');
+            });
+        }
+
+        // 初始化加载
+        window.onload = loadFromLocalStorage;
+    </script>
+</body>
+</html>
